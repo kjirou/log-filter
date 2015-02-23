@@ -1,3 +1,4 @@
+var devnull = require('dev-null');
 var fs = require('fs');
 var readline = require('readline');
 
@@ -8,16 +9,15 @@ if (process.env.NODE_LOG_FILTER_NOT) {
   lineMatcher = new RegExp(process.env.NODE_LOG_FILTER_NOT);
   isNotMatched = true;
 }
-var devnullStream = fs.createReadStream('/dev/null');
 
 
 module.exports = function logFilter() {
-  var readlineStream = readline.createInterface({
+  var rl = readline.createInterface({
     input: process.stdin,
-    output: devnullStream
+    output: devnull()
   });
 
-  readlineStream.on('line', function(line) {
+  rl.on('line', function(line) {
     var matched = lineMatcher.test(line);
     if (
       !isNotMatched && matched ||
@@ -25,5 +25,9 @@ module.exports = function logFilter() {
     ) {
       console.log(line);
     }
+  });
+
+  rl.on('close', function() {
+    process.exit(0);
   });
 };
