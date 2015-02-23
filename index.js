@@ -3,15 +3,15 @@ var fs = require('fs');
 var readline = require('readline');
 
 
-var lineMatcher = new RegExp(process.env.NODE_LOG_FILTER || '');
-var shouldMatch = true;
-if (process.env.NODE_LOG_FILTER_NOT) {
-  lineMatcher = new RegExp(process.env.NODE_LOG_FILTER_NOT);
-  shouldMatch = false;
-}
-
-
 module.exports = function logFilter() {
+
+  var lineMatcher = new RegExp(process.env.NODE_LOG_FILTER || '');
+  var shouldMatch = true;
+  if (process.env.NODE_LOG_FILTER_NOT) {
+    lineMatcher = new RegExp(process.env.NODE_LOG_FILTER_NOT);
+    shouldMatch = false;
+  }
+
   var rl = readline.createInterface({
     input: process.stdin,
     output: devnull()
