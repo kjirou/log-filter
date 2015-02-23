@@ -1,0 +1,29 @@
+{
+  "name": "log-filter",
+  "version": "1.0.0",
+  "author": "kjirou",
+  "bin": {
+    "log-filter": "./bin/log-filter.js"
+  },
+  "bugs": {
+    "url": "https://github.com/kjirou/log-filter/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "fixpack": "2.0.1"
+  },
+  "homepage": "https://github.com/kjirou/log-filter",
+  "keywords": [
+    "filter",
+    "log"
+  ],
+  "license": "https://github.com/kjirou/log-filter/blob/master/LICENSE",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjirou/log-filter.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
