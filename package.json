@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "kjirou",
   "bin": {
-    "log-filter": "./bin/log-filter.js"
+    "log-filter": "./bin/log-filter"
   },
   "bugs": {
     "url": "https://github.com/kjirou/log-filter/issues"
