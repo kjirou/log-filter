@@ -1,10 +1,9 @@
 # log-filter
 
 
-## Usage
+## Installation
 ```bash
-export NODE_FILTER_LOG='{Regex}'
-npm start | log-filter
+npm install -g log-filter
 ```
 
 
@@ -24,6 +23,11 @@ echo '<warn> It is warning' | log-filter  # Not displayed
 echo '<error> It is a error' | log-filter  # Not displayed
 echo '<log> It is a log' | log-filter
 <log> It is a log
+```
+
+```bash
+export NODE_LOG_FILTER_NOT='log pattern that you do not like read'
+npm run start-your-server | log-filter
 ```
 
 Note:
