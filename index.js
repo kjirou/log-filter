@@ -2,8 +2,12 @@ var fs = require('fs');
 var readline = require('readline');
 
 
-var NODE_LOG_FILTER = process.env.NODE_LOG_FILTER || '';
-var lineMatcher = new RegExp(NODE_LOG_FILTER);
+var lineMatcher = new RegExp(process.env.NODE_LOG_FILTER || '');
+var isNotMatched = false;
+if (process.env.NODE_LOG_FILTER_NOT) {
+  lineMatcher = new RegExp(process.env.NODE_LOG_FILTER_NOT);
+  isNotMatched = true;
+}
 var devnullStream = fs.createReadStream('/dev/null');
 
 
@@ -14,7 +18,11 @@ module.exports = function logFilter() {
   });
 
   readlineStream.on('line', function(line) {
-    if (lineMatcher.test(line)) {
+    var matched = lineMatcher.test(line);
+    if (
+      !isNotMatched && matched ||
+      isNotMatched && !matched
+    ) {
       console.log(line);
     }
   });
