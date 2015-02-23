@@ -1,4 +1,4 @@
-# log-filter
+# log-filter [![npm version](https://badge.fury.io/js/log-filter.svg)](http://badge.fury.io/js/log-filter)
 
 
 ## Installation
