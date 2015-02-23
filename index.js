@@ -4,10 +4,10 @@ var readline = require('readline');
 
 
 var lineMatcher = new RegExp(process.env.NODE_LOG_FILTER || '');
-var isNotMatched = false;
+var shouldMatch = true;
 if (process.env.NODE_LOG_FILTER_NOT) {
   lineMatcher = new RegExp(process.env.NODE_LOG_FILTER_NOT);
-  isNotMatched = true;
+  shouldMatch = false;
 }
 
 
@@ -18,10 +18,9 @@ module.exports = function logFilter() {
   });
 
   rl.on('line', function(line) {
-    var matched = lineMatcher.test(line);
     if (
-      !isNotMatched && matched ||
-      isNotMatched && !matched
+      shouldMatch && lineMatcher.test(line) ||
+      !shouldMatch && !lineMatcher.test(line)
     ) {
       console.log(line);
     }

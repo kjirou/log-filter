@@ -31,4 +31,4 @@ npm run start-your-server | log-filter
 ```
 
 Note:
-- `$NODE_LOG_FILTER_NOT` is priority than `NODE_LOG_FILTER`.
+- `$NODE_LOG_FILTER_NOT` is priority than `$NODE_LOG_FILTER`.
