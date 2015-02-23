@@ -1,5 +1,6 @@
 {
   "name": "log-filter",
+  "description": "Filter server logs simply",
   "version": "1.0.0",
   "author": "kjirou",
   "bin": {
