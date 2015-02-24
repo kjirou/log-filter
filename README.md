@@ -23,6 +23,7 @@ echo 'warn: It is warning' | log-filter --contain error  # Not displayed
 ```bash
 echo 'warn: It is warning' | log-filter --match '(warn|error)'
 warn: It is warning
+echo 'warn: It is warning' | log-filter --match '^warning'  # Not displayed
 ```
 
 - Note: `--match` is priority than `--contain`.
