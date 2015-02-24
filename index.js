@@ -2,15 +2,12 @@ var devnull = require('dev-null');
 var fs = require('fs');
 var readline = require('readline');
 
+var lineMatcherGenerator = require('./lib/line-matcher-generator');
+
 
 module.exports = function logFilter() {
 
-  var lineMatcher = new RegExp(process.env.NODE_LOG_FILTER || '');
-  var shouldMatch = true;
-  if (process.env.NODE_LOG_FILTER_NOT) {
-    lineMatcher = new RegExp(process.env.NODE_LOG_FILTER_NOT);
-    shouldMatch = false;
-  }
+  var lineMatcher = lineMatcherGenerator(process.argv.slice(2));
 
   var rl = readline.createInterface({
     input: process.stdin,
@@ -18,10 +15,7 @@ module.exports = function logFilter() {
   });
 
   rl.on('line', function(line) {
-    if (
-      shouldMatch && lineMatcher.test(line) ||
-      !shouldMatch && !lineMatcher.test(line)
-    ) {
+    if (lineMatcher(line)) {
       console.log(line);
     }
   });

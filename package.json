@@ -10,10 +10,13 @@
     "url": "https://github.com/kjirou/log-filter/issues"
   },
   "dependencies": {
-    "dev-null": "0.1.1"
+    "dev-null": "0.1.1",
+    "escape-regexp": "0.0.1",
+    "minimist": "1.1.0"
   },
   "devDependencies": {
-    "fixpack": "2.0.1"
+    "fixpack": "2.0.1",
+    "mocha": "2.1.0"
   },
   "homepage": "https://github.com/kjirou/log-filter",
   "keywords": [
@@ -27,6 +30,6 @@
     "url": "https://github.com/kjirou/log-filter.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   }
 }

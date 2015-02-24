@@ -7,28 +7,35 @@ npm install -g log-filter
 ```
 
 
+## Usage
+```bash
+log-filter [--contain -c KEYWORD] [--match -m REG_EXP] [--not -n]
+```
+
+### --contain, -c
+```bash
+$echo 'warn: It is warning' | log-filter --contain warn
+warn: It is warning
+$echo 'warn: It is warning' | log-filter --contain error  # Not displayed
+```
+
+### --match, -m
+```bash
+$echo 'warn: It is warning' | log-filter --match '(warn|error)'
+warn: It is warning
+```
+
+- `--match` is priority than `--contain`.
+
+### --not, -n
+```bash
+$echo 'warn: It is warning' | log-filter --contain error --not
+warn: It is warning
+$echo 'warn: It is a error' | log-filter --contain error --not  # Not displayed
+```
+
+
 ## Examples
 ```bash
-export NODE_FILTER_LOG='(warn|error)'
-echo '<warn> It is warning' | log-filter
-<warn> It is warning
-echo '<error> It is a error' | log-filter
-<error> It is a error
-echo '<log> It is a log' | log-filter  # Not displayed
+npm run start-your-server | log-filter -n -m 'log pattern that you do not like reading'
 ```
-
-```bash
-export NODE_LOG_FILTER_NOT='(warn|error)'
-echo '<warn> It is warning' | log-filter  # Not displayed
-echo '<error> It is a error' | log-filter  # Not displayed
-echo '<log> It is a log' | log-filter
-<log> It is a log
-```
-
-```bash
-export NODE_LOG_FILTER_NOT='log pattern that you do not like read'
-npm run start-your-server | log-filter
-```
-
-Note:
-- `$NODE_LOG_FILTER_NOT` is priority than `$NODE_LOG_FILTER`.
