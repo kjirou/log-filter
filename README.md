@@ -38,5 +38,5 @@ echo 'warn: It is warning' | log-filter --contain warn --not  # Not displayed
 
 ## Examples
 ```bash
-npm run start-your-server | log-filter -n -m 'log pattern that you do not like reading'
+npm run start-your-server | log-filter -n -m 'log pattern that you do not want reading'
 ```
