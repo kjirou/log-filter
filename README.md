@@ -32,7 +32,7 @@ echo 'warn: It is warning' | log-filter --match '^warning'  # Not displayed
 ```bash
 echo 'warn: It is warning' | log-filter --contain error --not
 warn: It is warning
-echo 'warn: It is a error' | log-filter --contain error --not  # Not displayed
+echo 'warn: It is warning' | log-filter --contain warn --not  # Not displayed
 ```
 
 
