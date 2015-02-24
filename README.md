@@ -25,7 +25,7 @@ echo 'warn: It is warning' | log-filter --match '(warn|error)'
 warn: It is warning
 ```
 
-- `--match` is priority than `--contain`.
+- Note: `--match` is priority than `--contain`.
 
 ### --not, -n
 ```bash
